@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ ! -d "/home/coder/workspace/project" ]
+then
+#ssh-keyscan -t rsa <yourGitProviderEndpoint> >> ~/.ssh/known_hosts
+git clone https://github.com/HoJungAhn/citizen_java.git /home/coder/workspace/project
+else
+echo "Project has already been cloned."
+fi
