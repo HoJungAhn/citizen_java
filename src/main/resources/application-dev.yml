@@ -1,0 +1,51 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: citizen-service
+    
+  datasource:
+      type: com.zaxxer.hikari.HikariDataSource
+      url: jdbc:h2:file:./target/h2db/db/ski-${server.port};DB_CLOSE_DELAY=-1
+      username: ski
+      password: 
+      hikari:
+          auto-commit: false
+  sql:
+    init:
+      encoding: utf-8
+      schemaLocations: classpath:script/schema.sql
+      dataLocations: classpath:script/data.sql
+      mode: always    
+    
+  redis:
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 2
+    port: 16379
+    host: 20.214.162.220
+    password: 
+    database: 0
+    
+  session:
+    timeout: 60
+    store-type: redis
+    redis:
+      flush-mode: on-save
+      namespace: spring:session
+  
+security:
+  oauth2:
+    client:
+      client-id: skiafn-ui
+      client-secret: skiafn-ui
+    resource:
+      token-info-uri: http://skiafn-auth/oauth/check_token
+     
+bcm:
+  common:
+    jwk-key: signingkey
+    bcm-info-url: http://skiafn-bcm-non-nexacro 

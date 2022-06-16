@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: skiafn-bcm-service
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+
+mybatis:
+  mapper-locations: classpath*:mapper/**/*.xml
+  type-aliases-package: com.skinnovation.citizen
+  configuration:
+    map-underscore-to-camel-case: true      
+    
+jasypt:
+  encryptor:
+    bean: encryptorBean
+    password: xptmxm!tltmxpa#
+    algorithm: PBEWithSHA256And128BitAES-CBC-BC
+    poolSize: 2
+
+jwt:
+  signingKey: "signingkey"
+    

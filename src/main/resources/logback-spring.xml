@@ -1,0 +1,64 @@
+<configuration>
+    <springProfile name="dev, stg, prod, default, local">
+        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <charset>UTF-8</charset>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %magenta([%thread]) %highlight([%-5level]) [%logger{100}] - %msg%n</pattern>
+            </encoder>
+        </appender>
+
+        <logger name="org.springframework" level="DEBUG"/>
+        <logger name="org.springframework.web" level="DEBUG" additivity="false"/>
+        <logger name="org.springframework.session.web.http.SessionRepositoryFilter" level="INFO" additivity="false"/>
+        <logger name="org.springframework.data.redis.core.RedisConnectionUtils" level="INFO" additivity="false"/>
+        
+
+        <logger name="jdbc.connection" level="ERROR"/>
+        <logger name="jdbc.sqlonly" level="ERROR"/>
+        <logger name="jdbc.sqltiming" level="INFO"/>
+        <logger name="jdbc.audit" level="ERROR"/>
+        <logger name="jdbc.resultset" level="ERROR"/>
+        <logger name="jdbc.resultsettable" level="ERROR"/>
+
+    </springProfile>
+    <!--logback 파일설정-->
+    <!--<springProfile name="dev, stg, prod, default, local">
+        <springProperty scope="context" name="serverName" source="HOSTNAME"/>
+        <springProperty scope="context" name="ACTIVE_PROFILE" source="spring.profiles.active"/>
+        <springProperty scope="context" name="APP_NAME" source="spring.application.name"/>
+
+        <property name="LOG_DIR" value="/skiafn-nfs/logs/was"/>
+        <property name="LOG_FILE" value="logfile"/>
+        <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>${LOG_DIR}/${ACTIVE_PROFILE}/${APP_NAME}/${serverName:-${HOSTNAME}}_${LOG_FILE}.log</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>
+                    ${LOG_DIR}/${ACTIVE_PROFILE}/${APP_NAME}/${serverName:-${HOSTNAME}}_%d{yyyy-MM-dd_HH}_${LOG_FILE}.gz
+                </fileNamePattern>
+                <maxHistory>168</maxHistory>
+                <totalSizeCap>2GB</totalSizeCap>
+            </rollingPolicy>
+            <encoder>
+                <charset>UTF-8</charset>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%-5level] [%logger{100}] - %msg%n</pattern>
+            </encoder>
+        </appender>
+
+        <logger name="com.skinnovation.skiafn.bcm" level="ERROR"/>
+
+        <root level="ERROR">
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref="FILE"/>
+        </root>
+    </springProfile>-->
+
+    <springProfile name="local, default">
+        <logger name="com.zaxxer.hikari" level="TRACE"/>
+
+        <logger name="com.skinnovation.citizen" level="INFO"/>
+
+        <root level="ERROR">
+            <appender-ref ref="STDOUT"/>
+        </root>
+    </springProfile>
+</configuration>
