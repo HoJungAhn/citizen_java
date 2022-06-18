@@ -1,4 +1,3 @@
-FROM ubuntu:latest
-RUN apt-get update && apt-get install -y curl
+FROM codercom/enterprise-java:ubuntu
 COPY [ "configure", "/coder/configure" ]
 USER coder
