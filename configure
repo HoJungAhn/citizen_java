@@ -8,5 +8,5 @@ else
 echo "Project has already been cloned."
 fi
 # install VS-CODE extensions from the image into code-server
-/var/tmp/coder/code-server/bin/code-server --install-extension /vsix/vscjava.vscode-java-debug-0.41.2022061304.vsix
-/var/tmp/coder/code-server/bin/code-server --install-extension /vsix/vscjava.vscode-java-pack-0.23.2022061300.vsix
+/var/tmp/coder/code-server/bin/code-server --install-extension /coder/vscjava.vscode-java-debug-0.41.2022061304.vsix
+/var/tmp/coder/code-server/bin/code-server --install-extension /coder/vscjava.vscode-java-pack-0.23.2022061300.vsix
