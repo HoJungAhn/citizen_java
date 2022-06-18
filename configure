@@ -3,7 +3,7 @@ if [ ! -d "/home/coder/workspace/project" ]
 then
 #ssh-keyscan -t rsa <yourGitProviderEndpoint> >> ~/.ssh/known_hosts
 git clone https://github.com/HoJungAhn/citizen_java.git /home/coder/workspace/project
-echo "{\"query\": {\"workspaceId\": \"62ad968b-b26b83632c788deaa6fb4074\",\"folder\": \"/home/coder/project\"}}" > /home/coder/.local/share/code-server/coder.json
+echo "{\"query\": {\"workspaceId\": \"62ad968b-b26b83632c788deaa6fb4074\",\"folder\": \"/home/coder/workspace/project\"}}" > /home/coder/.local/share/code-server/coder.json
 else
 echo "Project has already been cloned."
 fi
